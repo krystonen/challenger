@@ -1,0 +1,28 @@
+<h1> All answers </h1>
+<p>(Nr:<%= @answers.count%>)</p>
+
+<table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col"> Question </th>
+        <th scope="col"> ID </th>
+        <th scope="col"> Code </th>
+        <th scope="col"> Correct Answer? </th>
+      
+      </tr>
+    </thead>
+<% @answers.each do | answer| %>
+    <tbody>
+            <tr>
+            <td> <%= answer.question.name %> </td>
+            <td> <%= answer.question.id%> </td>
+            <td> <%= answer.name %> </td>
+            <td> <%= answer.code %> </td>
+        </tr>    
+  </tbody>
+<% end %>
+</table>
+
+<hr>
+
+<%= link_to 'Back', questions_path %> | <%= link_to 'Home', root_path%>

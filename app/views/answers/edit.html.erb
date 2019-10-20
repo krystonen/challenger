@@ -1,0 +1,36 @@
+<h2>Edit Answer </h2>
+<p> <%= @answer.id %></p>
+<%= form_with(model:[@question, @answer || Answer.new], local: true) do |form| %>
+  <% if @answer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+
+      <ul>
+      <% @answer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %> (*)
+    <%= form.text_area :name, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %> (*)
+    <%= form.text_area :code, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= radio_button_tag(:correct, "true") %>
+    <%= label_tag(:good_answer, "Good answer") %>
+    <%= radio_button_tag(:correct, "false") %>
+    <%= label_tag(:bad_answer, "Incorrect answer") %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-primary" %>
+  </div>
+<% end %>

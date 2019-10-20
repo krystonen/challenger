@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A learning app to create questions and their answers (CRUD).
 
-Things you may want to cover:
+Written by using
 
-* Ruby version
+* Ruby version: `ruby 2.4.4`
 
-* System dependencies
+* Rails version: `Rails 5.2.3`
 
-* Configuration
+* Database: `PostgreSQL 11.2`
 
-* Database creation
+* Sign up to interact with the app
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* No seeders/ Tests

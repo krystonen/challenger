@@ -1,17 +1,6 @@
-<p id="notice"><%= notice %></p>
-
+<h1> <%= @question.name %> </h1>
 <p>
-  <strong>Question number:</strong>
-  <%= @question.number %>
-</p>
-
-<p>
-  <strong>Question Title:</strong>
-  <%= @question.name %>
-</p>
-
-<p>
-  <strong>Folder:</strong>
+<strong>Folder:</strong>
   <%= @question.folder %>
 </p>
 
@@ -19,6 +8,44 @@
   <strong>Feedback:</strong>
   <%= @question.feedback %>
 </p>
+
+<hr>
+
+<h2> Possible Answers: </h2>
+
+<% if @answers_array.present? %>
+  <table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col"> ID </th>
+        <th scope="col"> Answer </th>
+        <th scope="col"> Code </th>
+        <th scope="col"> Correct Answer </th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+  <% @answers_array.each_with_index do |answer| %>  
+      <tr>
+        <td> <%= answer.id %> </td>
+        <td> <%= answer.name %> </td>
+        <td> <%= answer.code %> </td>
+        <td> <%= answer.correct %> </td>
+        <td>
+          <%= link_to 'Edit', edit_question_answer_path(@question, answer) %>
+          <%= link_to 'Delete', question_answer_path(@question, answer), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+  </table>
+<% end %>
+
+<% if @answers_array.count < 3 %>
+  <p><%= link_to 'Add possible answers', new_question_answer_path(@question) %> </p>  
+<% end%>
+
+<hr>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %> |

@@ -1,9 +1,13 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  resources :questions
-  get 'pages/home'
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: "pages#home"
+  root to: 'pages#home'
 
+  resources :questions do
+    resources :answers, only: %i[show new create destroy update edit]
+  end
+
+  resources :answers, only: [:index]
 end

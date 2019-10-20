@@ -1,31 +1,40 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Questions</h1>
+<h1>Questions </h1>
+<p>(Total: <%= @questions.count%>)</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Folder</th>
-      <th>Feedback</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @questions.each do |question| %>
+<div class="table-responsive">  
+  <table class="table table-hover table-sm">
+    <thead>
       <tr>
-        <td><%= question.name %></td>
-        <td><%= question.folder %></td>
-        <td><%= question.feedback %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Id</th>
+        <th>Number</th>
+        <th>Name</th>
+        <th>Folder</th>
+        <th>Feedback</th>
+        <th>Nr of Answers</th>
+        <th>Nr of true Answers</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @questions.each do |question| %>
+        <tr>
+          <td><%= question.id %></td>
+          <td><%= question.number %></td>
+          <td><%= question.name %></td>
+          <td><%= question.folder %></td>
+          <td><%= question.feedback %></td>
+          <td><%= question.answers.count %></td>
+          <td><%= question.answers.count{ |answer | answer[:correct] == true}%></td>
+          <td><%= link_to 'Show', question %></td>
+          <td><%= link_to 'Edit', edit_question_path(question) %></td>
+          <td><%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 
-<%= link_to 'New Question', new_question_path %>
+<%= link_to 'Add a new Question', new_question_path %>

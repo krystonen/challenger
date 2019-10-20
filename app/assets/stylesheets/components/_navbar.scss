@@ -1,8 +1,9 @@
 .navbar-le {
     justify-content: space-between;
-    background: lightgray;
-  }
+    box-shadow: -8px -1px 2px 1px #737679;
   
+  }
+ 
   .navbar-le .navbar-collapse {
     flex-grow: 0;
   }
@@ -10,4 +11,3 @@
   .navbar-le .navbar-brand img {
     width: 40px;
   }
-  

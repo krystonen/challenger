@@ -10,6 +10,8 @@ Written by using
 
 * Database: `PostgreSQL 11.2`
 
+* Start: `rails s`, visit: `http://localhost:3000`
+
 * Sign up to interact with the app
 
 * No seeders/ Tests
